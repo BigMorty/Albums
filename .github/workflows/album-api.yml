@@ -46,8 +46,12 @@ jobs:
 
           az extension add --name containerapp --yes
 
-          echo "Starting Deploying"
+          echo "Setting Registry Credentials"
 
+          az containerapp registry set --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --server ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }} --username  ${{ secrets.REGISTRY_USERNAME }} --password ${{ secrets.REGISTRY_PASSWORD }} --debug
+
+          echo "Starting Deploying"
+          
           az containerapp update --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} -i ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.PROJECT_NAME_FOR_DOCKER }}:${{ github.sha }} --debug
     - name: logout
       run: >

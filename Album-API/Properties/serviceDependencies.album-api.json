@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "secretStore": "AzureContainerApp",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/Album-API",
+      "type": "appInsights.azure",
+      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING"
+    }
+  }
+}

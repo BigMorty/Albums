@@ -13,6 +13,7 @@ builder.Services.AddCors(options => {
         builder.AllowAnyMethod();
     });
 });
+builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();
 
@@ -43,7 +44,7 @@ record Album(int Id, string Title, string Artist, double Price, string Image_URL
     public static List<Album> GetAll()
     {
         var albums = new List<Album>(){
-            new Album(1, "Sgt Peppers Lonely Hearts Club Band", "The Beatles", 10.99, "https://www.listchallenges.com/f/items/f3b05a20-31ae-4fdf-aebd-d1515af54eea.jpg"),
+            new Album(1, "Moving Pictures", "Rush", 10.99, "https://www.listchallenges.com/f/items/f3b05a20-31ae-4fdf-aebd-d1515af54eea.jpg"),
             new Album(2, "Pet Sounds", "The Beach Boys", 13.99, "https://www.listchallenges.com/f/items/fdef1440-e979-455a-90a7-14e77fac79af.jpg"),
             new Album(3, "The Beatles: Revolver", "The Beatles", 13.99, "https://www.listchallenges.com/f/items/19ff786d-d7a4-4fdc-bee2-59db8b33370d.jpg"),
             new Album(4, "Highway 61 Revisited", "Bob Dylan", 12.99,"https://www.listchallenges.com/f/items/428cf087-6c24-45ad-bf8c-bd3c57ddf444.jpg"),

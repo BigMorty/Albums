@@ -48,7 +48,7 @@ jobs:
 
           echo "Setting Registry Credentials"
 
-          az containerapp registry set --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --server ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }} --username  ${{ secrets.REGISTRY_USERNAME }} --password ${{ secrets.REGISTRY_PASSWORD }} --debug
+          az containerapp registry set --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --server ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }} --username  ${{ secrets.MIKEMORTACR_USERNAME_FFFF }} --password ${{ secrets.MIKEMORTACR_PASSWORD_FFFF }} --debug
 
           echo "Starting Deploying"
           

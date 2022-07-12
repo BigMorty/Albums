@@ -37,6 +37,22 @@ app.MapGet("/albums", () =>
 })
 .WithName("GetAlbums");
 
+app.MapGet("/healthgoodslow", () =>
+{
+    Task.Delay(60000);  // Delay 1 minute - use to test status of app
+    return Results.Ok();
+});
+
+app.MapGet("/healthgood", () =>
+{
+    return Results.Ok();
+});
+
+app.MapGet("/healthbad", () =>
+{
+    return Results.StatusCode(503);
+});
+
 app.Run();
 
 record Album(int Id, string Title, string Artist, double Price, string Image_URL)
@@ -44,7 +60,7 @@ record Album(int Id, string Title, string Artist, double Price, string Image_URL
     public static List<Album> GetAll()
     {
         var albums = new List<Album>(){
-            new Album(1, "Moving Pictures", "Rush", 11.99, "https://www.listchallenges.com/f/items/07972f5f-5846-4950-a084-61b0081d4448.jpg"),
+            new Album(1, "Moving Pictures", "Mike", 11.99, "https://www.listchallenges.com/f/items/07972f5f-5846-4950-a084-61b0081d4448.jpg"),
             new Album(2, "Pet Sounds", "The Beach Boys", 13.99, "https://www.listchallenges.com/f/items/fdef1440-e979-455a-90a7-14e77fac79af.jpg"),
             new Album(3, "The Beatles: Revolver", "The Beatles", 13.99, "https://www.listchallenges.com/f/items/19ff786d-d7a4-4fdc-bee2-59db8b33370d.jpg"),
             new Album(4, "Highway 61 Revisited", "Bob Dylan", 12.99,"https://www.listchallenges.com/f/items/428cf087-6c24-45ad-bf8c-bd3c57ddf444.jpg"),

@@ -36,22 +36,6 @@ app.MapGet("/albums", () =>
 })
 .WithName("GetAlbums");
 
-app.MapGet("/healthgoodslow", () =>
-{
-    Task.Delay(60000);  // Delay 1 minute - use to test status of app
-    return Results.Ok();
-});
-
-app.MapGet("/healthgood", () =>
-{
-    return Results.Ok();
-});
-
-app.MapGet("/healthbad", () =>
-{
-    return Results.StatusCode(503);
-});
-
 app.Run();
 
 record Album(int Id, string Title, string Artist, double Price, string Image_URL)

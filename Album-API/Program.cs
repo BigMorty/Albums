@@ -13,7 +13,6 @@ builder.Services.AddCors(options => {
         builder.AllowAnyMethod();
     });
 });
-builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();
 
@@ -59,6 +58,7 @@ record Album(int Id, string Title, string Artist, double Price, string Image_URL
 {
     public static List<Album> GetAll()
     {
+        var azureContainerApps = "Amazing!";
         var albums = new List<Album>(){
             new Album(1, "You, Me and an App Id", "Daprize", 10.99, "https://aka.ms/albums-daprlogo"),
             new Album(2, "Seven Revision Army", "The Blue-Green Stripes", 13.99, "https://aka.ms/albums-containerappslogo"),
